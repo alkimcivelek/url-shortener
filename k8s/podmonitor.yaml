@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: url-shortener-monitor
+  labels:
+    app: url-shortener
+spec:
+  selector:
+    matchLabels:
+      app: url-shortener
+  podMetricsEndpoints:
+  - port: http
+    path: /health
+    interval: 30s
